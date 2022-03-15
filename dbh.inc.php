@@ -12,7 +12,13 @@ User TABLE
 Email varchar
 password-varchar)
 
-
+Restaurant Table
+(Restaurantid int primary key- autoincrement
+Restaurantname varchar
+Food_Type varchar
+Location varchar 
+Linkpic varchar
+Linkweb varchar )
 
 Liked TABLE 
 (Likeid int primary key auto_increment
