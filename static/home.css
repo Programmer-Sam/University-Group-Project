@@ -1,0 +1,107 @@
+h1,
+nav {
+  text-align: center;
+}
+
+nav a {
+  border-radius: 5px;
+  height: 34px;
+  width: 80px;
+  background-color: aquamarine;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+x§* {
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background-color: white;
+}
+
+h1 {
+    color: White;
+    text-align: center;
+    padding-top: 50px;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+ul {
+    border-bottom: 0.1px solid white;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: rgb(37, 37, 37);
+}
+
+.button {
+    padding: 5px 5px;
+    background-color: white;
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 7px;
+    margin: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 6px #999;
+}
+
+.button:hover {
+    background-color: lightgray;
+}
+
+.button:active {
+    background-color: gray;
+    box-shadow: 0 4px #666;
+    transform: translateY(2px)
+}
+
+.content {
+    max-width: 2000px;
+    margin-top: 46px;
+    background-color: black;
+}
+
+.center {
+    margin: auto;
+}
+
+.button-pack {
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    margin: 30px;
+}
