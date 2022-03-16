@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device width, initial scale=1.0">
+    <link rel="stylesheet" href="../static/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <title>Account</title>
+</head>
+
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+</style>
+
+
+<body>
+  <div><form action="/nav" method="post">
+      <ul>
+          <li><input type="submit" value="Home" name="homeButton"/></li>
+          <li><input type="submit" value="Liked" name="likedButton"/></li>
+          <li style="float:right"><input type="submit" value="Account" name="accountButton"/></li>
+      </ul>
+  </form></div>
+
+    <div class="content">
+      <form action="/accountNav" method="post">
+        <input type="submit" value="SignIn" name="signInButton"/>
+        <input type="submit" value="SignUp" name="signUpButton"/>
+      </form>
+    </div>
+
+    <footer class="footer">
+        <a>foodfinder@gmail.com</a>
+    </footer>
+</body>
+
+</html>

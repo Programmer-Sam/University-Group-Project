@@ -3,7 +3,7 @@
 <title>Food Finder</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="../static/home.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <style>
     body {
@@ -13,13 +13,13 @@
 
 <body>
 
-    <div>
+    <div><form action="/nav" method="post">
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="liked.html">Liked</a></li>
-            <li style="float:right"><a href="account.html">Account</a></li>
+            <li><input type="submit" value="Home" name="homeButton"/></li>
+            <li><input type="submit" value="Liked" name="likedButton"/></li>
+            <li style="float:right"><input type="submit" value="Account" name="accountButton"/></li>
         </ul>
-    </div>
+    </form></div>
 
     <div class="content">
         <div class="center" style="max-width:700px;">
