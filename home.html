@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Food Finder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<style>
+    body {
+        font-family: "Lato", sans-serif
+    }
+</style>
+
+<body>
+
+    <div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="liked.html">Liked</a></li>
+            <li style="float:right"><a href="account.html">Account</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="center" style="max-width:700px;">
+            <h1>RESTAURANTS</h1>
+            <p><i>Pick what you like!</i></p><br>
+
+            <!-- Automatic Slideshow Images -->
+            <div class="mySlides">
+                <img src="Black.png" style="width:100%; max-height: 500px;">
+                <div class="button-pack">
+                    <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
+                </div>
+            </div>
+            <div class="mySlides">
+                <img src="White.png" style="width:100%; max-height: 500px;">
+                <div class="button-pack">
+                    <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a>foodfinder@gmail.com</a>
+    </footer>
+
+    <script>
+        var myIndex = 1;
+        change(myIndex);
+
+        function plus(n) {
+            change(myIndex += n);
+        }
+
+        function current(n) {
+            change(myIndex = n);
+        }
+
+        function change(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides ");
+            if (n > x.length) {
+                myIndex = 1;
+            }
+            if (n < 1) {
+                myIndex = x.length;
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none ";
+            }
+            x[myIndex - 1].style.display = "block ";
+        }
+    </script>
+
+</body>
+
+</html>
