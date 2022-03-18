@@ -56,5 +56,15 @@ def addUserAccount():
     elif request.method == 'POST':
         return render_template('home.html')
 
+@app.route('/signIn', methods=['GET', 'POST'])
+def signIn():
+    if request.method == 'GET':
+        email = request.args.get('email')
+        password = request.args.get('password')
+        if password == database.queryUserEmailReturnHash(email):
+            return render_template('home.html')
+        return render_template('signin.html')
+    elif request.method == 'POST':
+        return render_template('signup.html')
 if __name__ == '__main__':
     app.run(debug=True)
