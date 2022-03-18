@@ -22,6 +22,9 @@ def insert_db(email, password):
     db.session.add (inserted_row)
     db.session.commit()
 
-def query():
-    records = users.query.filter_by(email="samchau95@gmail.com").first()
-    print(records.password_hash)
+def queryUserEmailReturnHash(email_input):
+    records = users.query.filter_by(email=email_input).first()
+    if records != None:
+        return records.password_hash
+    else:
+        return False
