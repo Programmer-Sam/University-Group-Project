@@ -55,6 +55,7 @@ def addUserAccount():
         confirmPassword = request.args.get('confirmPassword')
         if confirmPassword == password:
             database.insert_db(email, password)
+            print("added acc")
         return render_template('signup.html')
     elif request.method == 'POST':
         return render_template('home.html')

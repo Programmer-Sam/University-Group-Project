@@ -61,10 +61,12 @@ def addUserAccount():
 
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
+    print("enter")
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
         if password == database.queryUserEmailReturnHash(email):
+            print("enter")
             return render_template('home.html')
         return render_template('signin.html')
     elif request.method == 'POST':
