@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device width, initial scale=1.0">
-    <link rel="stylesheet" href="../static/home.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <title>Account</title>
-</head>
-
+<title>Account</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <style>
     body {
         font-family: "Lato", sans-serif
     }
 </style>
 
-
 <body>
-  <div><form action="/nav" method="post">
-      <ul>
-          <li><input type="submit" value="Home" name="homeButton"/></li>
-          <li><input type="submit" value="Liked" name="likedButton"/></li>
-          <li style="float:right"><input type="submit" value="Account" name="accountButton"/></li>
-      </ul>
-  </form></div>
+    <div>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/liked">Liked</a></li>
+            <li style="float:right"><a href="/account">Account</a></li>
+        </ul>
+    </div>
 
     <div class="content">
-      <form action="/accountNav" method="post">
-        <input type="submit" value="SignIn" name="signInButton"/>
-        <input type="submit" value="SignUp" name="signUpButton"/>
-      </form>
+        <h1 style="margin-bottom: 60px">Account Details</h1>
+        <p class="account_page">{{posts.full_name}}</p>
+        <p class="account_page">{{posts.date_of_birth}}</p>
+        <p class="account_page">{{posts.nationality}}</p>
+        <p class="account_page" style="margin-bottom: 70px">{{posts.email}}</p>
+        <hr>
+        <form class="login">
+            <p style="font-size: 24px; margin-bottom: 36px;">Change Password</p>
+            <input class="input" type="password" placeholder="new password"><br>
+            <input class="input" type="password" placeholder="confirm password"><br>
+            <input type="submit" class="button_diff" value="Change Password">
+        </form>
     </div>
 
     <footer class="footer">
