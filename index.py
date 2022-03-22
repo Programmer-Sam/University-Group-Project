@@ -8,30 +8,33 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
 db = SQLAlchemy(app)
 
+posts = {
+    'full_name':'Svetozar Miloshevski',
+    'nationality':'Macedonian',
+    'email':'svetozar.milosevski@gmail.com',
+    'date_of_birth':'5th January 2003'
+}
+
 @app.route('/')
+@app.route("/home")
 def home():
     return render_template('home.html')
+
+@app.route("/liked")
+def liked():
+    return render_template('liked.html')
+
+@app.route("/account")
+def account():
+    return render_template('account.html', posts=posts)
+
 @app.route('/signin')
 def signin():
     return render_template('signin.html')
 
-
-@app.route('/test', methods=['POST'])
-def test():
-    return render_template('signin.html')
-
-@app.route('/nav', methods=['GET', 'POST'])
-def nav():
-    if request.method == 'POST':
-        if request.form.get('accountButton') == 'Account':
-            return render_template('account.html')
-        elif request.form.get('likedButton') == 'Liked':
-            return render_template('liked.html')
-        elif request.form.get('homeButton') == 'Home':
-            return render_template('home.html')
-    elif request.method == 'GET':
-        return render_template('home.html')
-    return render_template('home.html')
+@app.route("/signup")
+def signup():
+    return render_template('signup.html')
 
 @app.route('/accountNav', methods=['GET', 'POST'])
 def accountNav():
