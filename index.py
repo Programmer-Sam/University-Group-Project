@@ -55,17 +55,18 @@ def addUserAccount():
         confirmPassword = request.args.get('confirmPassword')
         if confirmPassword == password:
             database.insert_db(email, password)
-            print("added acc")
         return render_template('signup.html')
     elif request.method == 'POST':
         return render_template('home.html')
 
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
+    print("enter")
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
         if password == database.queryUserEmailReturnHash(email):
+            print("enter")
             return render_template('home.html')
         return render_template('signin.html')
     elif request.method == 'POST':
