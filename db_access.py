@@ -60,4 +60,3 @@ def queryUserEmailReturnHash(email_input):
         return records.password_hash
     else:
         return False
-AddRestaurants()
