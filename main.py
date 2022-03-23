@@ -55,8 +55,7 @@ def addUserAccount():
         confirmPassword = request.args.get('confirmPassword')
         if confirmPassword == password:
             database.insert_db(email, password)
-            print("added acc")
-        return render_template('signup.html')
+        return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('home.html')
 
@@ -67,7 +66,7 @@ def signIn():
         password = request.args.get('password')
         if password == database.queryUserEmailReturnHash(email):
             return render_template('home.html')
-        return render_template('signin.html')
+        return render_template('home.html')
     elif request.method == 'POST':
         return render_template('signup.html')
 if __name__ == '__main__':
