@@ -28,3 +28,7 @@ def queryUserEmailReturnHash(email_input):
         return records.password_hash
     else:
         return False
+def getUserID(email):
+    records = users.query.filter_by(email=email).first()
+    if records != None:
+        return records.id
