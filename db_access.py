@@ -14,7 +14,7 @@ class users(db.Model):
        self.email = email
        self.password_hash = password_hash
 class restaurants(db.Model):
-    id = db.Column('user_id', db.Integer, primary_key = True)
+    id = db.Column('restaurant_id', db.Integer, primary_key = True)
     Restaurant_Name = db.Column(db.String(100))
     Food_Type = db.Column(db.String(200))
     Location = db.Column(db.String(200))
@@ -64,3 +64,14 @@ def getUserID(email):
     records = users.query.filter_by(email=email).first()
     if records != None:
         return records.id
+
+def getRestaurants():
+    data = restaurants.query.all()
+    output_data = []
+    for record in data:
+        output_data.append([record.Restaurant_Name,
+                            record.Food_Type,
+                            record.Location,
+                            record.Linkpic,
+                            record.Linkweb])
+    return output_data

@@ -9,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man
 db = SQLAlchemy(app)
 
 posts = {
-    'user_ID':'',
+    'user_ID': "User ID: ",
     'email':''
 }
 
@@ -66,11 +66,11 @@ def signIn():
         password = request.args.get('password')
         userID = database.getUserID(email)
         if password == database.queryUserEmailReturnHash(email):
-            # posts = {
-            #     'user_ID': userID,
-            #     'email': email
-            # }
-            return render_template('account.html')
+            posts = {
+                'user_ID': "User ID: " + str(userID),
+                'email': email
+            }
+            return render_template('account.html',posts=posts)
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('signup.html')
