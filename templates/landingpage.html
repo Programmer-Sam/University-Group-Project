@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landing page</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/landing.css')}}">
+
+<body>
+    <section class="sec">
+        <div class="content">
+            <div class="textBox">
+                <h2>This is what <br><span>You want</span></h2>
+                <p>Food finder, a website which helps you find your favorite restaurant faster</p>
+                <a style="text-decoration: none" class="button" href="/signup">Sign Up</a><a style="text-decoration: none" class="button" href="/signin">Sign In</a>
+            </div>
+            <img src="{{url_for('static', filename = 'foodlanding.jpg')}}" width="750px">
+        </div>
+    </section>
+</body>
+
+</html>

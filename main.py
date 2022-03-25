@@ -8,9 +8,18 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
 db = SQLAlchemy(app)
 
-global userID , email
+posts = {
+    'user_ID': "User ID: ",
+    'email':''
+}
 
 likedRestaurants = database.getLikesByUserID(1)
+
+print(likedRestaurants)
+
+@app.route('/landing')
+def landing():
+    return render_template('landingpage.html')
 
 @app.route('/')
 @app.route("/home")
@@ -19,11 +28,11 @@ def home():
 
 @app.route("/liked")
 def liked():
-    return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
+    return render_template('liked.html', likedRestaurants=likedRestaurants)
 
 @app.route("/account")
 def account():
-    return render_template('account.html', userID=userID, email=email)
+    return render_template('account.html', posts=posts)
 
 @app.route('/signin')
 def signin():
@@ -65,7 +74,11 @@ def signIn():
         password = request.args.get('password')
         userID = database.getUserID(email)
         if password == database.queryUserEmailReturnHash(email):
-            return render_template('account.html',userID=userID, email=email)
+            posts = {
+                'user_ID': "User ID: " + str(userID),
+                'email': email
+            }
+            return render_template('account.html',posts=posts)
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('signup.html')
