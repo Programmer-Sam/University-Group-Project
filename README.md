@@ -1,13 +1,13 @@
-# First Year Group Project: Food Finder
+#First Year Group Project: Food Finder
 
-[https://trello.com/b/3eQ1tNnI/remote-team-meetings](https://trello.com/b/3eQ1tNnI/remote-team-meetings)
+(https://trello.com/b/3eQ1tNnI/remote-team-meetings)[https://trello.com/b/3eQ1tNnI/remote-team-meetings]
 
-## Frontend
+##Frontend
 Michael
 Leo
 Svetozar
 
-## Backend
+##Backend
 Sam
 Nikhil
 Ben
