@@ -77,6 +77,17 @@ def getRestaurants():
                             record.Linkweb])
     return output_data
 
+def passDataToFront():
+    names = []
+    food_type = []
+    locations = []
+    data = getRestaurants()
+    for record in data:
+        names.append(record[0])
+        food_type.append(record[1])
+        locations.append(record[2])
+    return names, food_type, locations
+
 def getRestaurantsByID(id):
     data = restaurants.query.filter_by(id=id).first()
     return [data.Restaurant_Name, data.Food_Type, data.Location, data.Linkpic, data.Linkweb]
@@ -93,3 +104,5 @@ def getLikesByUserID(user_id):
         output_data.append([record.Disliked_bit,
                             record.Restaurantid_int, *getRestaurantsByID(record.Restaurantid_int)])
     return output_data
+
+print(passDataToFront())
