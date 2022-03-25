@@ -1,0 +1,17 @@
+
+<!Doctype html>
+
+
+<body>
+	<h1 id = 'hash'> Hello</h1>
+</body>
+
+<script type="text/javascript" src = "md5.min.js"></script>
+<script>
+	window.addEventListener('load', function() {
+    var variable = document.getElementById('hash');
+    var passHash = md5(variable);
+    alert(passHash);
+});
+</script>
+</html>
