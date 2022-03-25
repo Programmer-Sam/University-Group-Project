@@ -15,8 +15,6 @@ posts = {
 
 likedRestaurants = database.getLikesByUserID(1)
 
-print(likedRestaurants)
-
 @app.route('/')
 @app.route("/home")
 def home():
