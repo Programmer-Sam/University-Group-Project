@@ -1,0 +1,64 @@
+{% extends 'layout.html' %} {% block title %}Home{% endblock %} {% block content
+%}
+<body>
+  <div class="resturaunt-content">
+    <h1 style="text-align: center">RESTURAUNTS</h1>
+    <hr />
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="grid-container">
+      <div class="grid-item">
+        <img src="{{url_for('static', filename='nandos.jpeg')}}" />
+      </div>
+      <div class="grid-item">
+        <div class="vl"></div>
+      </div>
+      <div class="grid-item text-content">
+        <h3>{{ resturaunts[0][0] }}</h3>
+        <h5>{{ resturaunts[0][1] }}</h5>
+        <h5>{{ resturaunts[0][2] }}</h5>
+        <a href="https://www.nandos.com/"
+          ><small>Visit resturaunt here</small></a
+        >
+      </div>
+    </div>
+    <div class="choice-buttons">
+      <button type="submit" class="btn btn-link">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+
+      <button type="submit" class="btn btn-link" value="pass" onclick="plus(1)">
+        <span class="glyphicon glyphicon-heart"></span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    var myIndex = 1;
+    change(myIndex);
+
+    function plus(n) {
+      change((myIndex += n));
+    }
+
+    function current(n) {
+      change((myIndex = n));
+    }
+
+    function change(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides ");
+      if (n > x.length) {
+        myIndex = 1;
+      }
+      if (n < 1) {
+        myIndex = x.length;
+      }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none ";
+      }
+      x[myIndex - 1].style.display = "block ";
+    }
+  </script>
+
+  {% endblock %}
+</body>
