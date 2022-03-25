@@ -1,144 +1,146 @@
 x§* {
-    user-select: none;
+  user-select: none;
 }
 
 body {
-    margin: 0;
-    background-color: white;
+  margin: 0;
+  background-color: white;
 }
 
 h1 {
-    color: White;
-    text-align: center;
-    padding-top: 50px;
+  color: White;
+  text-align: center;
+  padding-top: 50px;
 }
 
 p {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 ul {
-    border-bottom: 0.1px solid white;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    width: 100%;
+  border-bottom: 0.1px solid white;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: white;
 }
 
 li {
-    float: left;
+  float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: rgb(37, 37, 37);
+  background-color: rgb(37, 37, 37);
 }
 
 .button {
-    padding: 5px 5px;
-    background-color: white;
-    width: 80px;
-    height: 40px;
-    border: none;
-    border-radius: 7px;
-    margin: 40px;
-    font-size: 20px;
-    font-weight: 400;
-    color: black;
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0 6px #999;
+  padding: 5px 5px;
+  background-color: white;
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 7px;
+  margin: 40px;
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 6px #999;
 }
 
 .button:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .button:active {
-    background-color: gray;
-    box-shadow: 0 4px #666;
-    transform: translateY(2px)
+  background-color: gray;
+  box-shadow: 0 4px #666;
+  transform: translateY(2px)
 }
 
 .content {
-    max-width: 2000px;
-    margin-top: 46px;
-    padding-bottom: 60px;
-    background-color: black;
+  max-width: 2000px;
+  margin-top: 46px;
+  padding-bottom: 60px;
+  background-color: black;
+  color: white;
 }
 
 .center {
-    margin: auto;
+  margin: auto;
 }
 
 .button-pack {
-    text-align: center;
+  text-align: center;
 }
 
 .footer {
-    text-align: center;
-    margin: 30px;
+  text-align: center;
+  margin: 30px;
 }
 
 .account_page {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .login {
-    text-align: center;
+  text-align: center;
 }
 
 input {
-    background-color: rgb(255, 255, 255);
-    width: 180px;
-    height: 32px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 2px solid rgb(255, 255, 255);
-    outline: none;
-    font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  width: 180px;
+  height: 32px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  outline: none;
+  font-size: 20px;
 }
 
 .button_diff {
-    padding: 5px 5px;
-    background-color: white;
-    width: 140px;
-    height: 28px;
-    border: none;
-    border-radius: 7px;
-    margin-top: 15px;
-    font-size: 15px;
-    color: black;
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0 6px #999;
+  padding: 5px 5px;
+  background-color: white;
+  width: 140px;
+  height: 28px;
+  border: none;
+  border-radius: 7px;
+  margin-top: 15px;
+  font-size: 15px;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 6px #999;
 }
 
 .button_diff:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 
 .button_diff:active {
-    background-color: gray;
-    box-shadow: 0 4px #666;
-    transform: translateY(2px)
+  background-color: gray;
+  box-shadow: 0 4px #666;
+  transform: translateY(2px)
 }
 
 hr {
-    height: 0.1px;
-    width: 80%;
-    margin-top: 20px;
-    margin-bottom: 60px;
+  height: 0.1px;
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 60px;
 }

@@ -23,7 +23,14 @@
   </div>
 
   <div class="content">
-    {{likedRestaurants}}
+    {%for i in range(0, len)%}
+    <!---->
+    <div>
+      {{likedRestaurants[i]}}
+    </div>
+
+    <!---->
+    {%endfor%}
   </div>
 
   <footer class="footer">

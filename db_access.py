@@ -91,6 +91,5 @@ def getLikesByUserID(user_id):
     output_data = []
     for index, record in enumerate(data):
         output_data.append([record.Disliked_bit,
-                            record.Restaurantid_int])
-        output_data[index].append(getRestaurantsByID(record.Restaurantid_int))
+                            record.Restaurantid_int, *getRestaurantsByID(record.Restaurantid_int)])
     return output_data
