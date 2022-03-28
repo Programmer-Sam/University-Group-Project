@@ -13,9 +13,9 @@ posts = {
     'email':''
 }
 
-# likedRestaurants = database.getLikesByUserID(1)
+likedRestaurants = database.getRestaurants()
 #
-# print(likedRestaurants)
+print(likedRestaurants)
 
 @app.route('/landing')
 def landing():
@@ -29,7 +29,7 @@ def home():
 
 @app.route("/liked")
 def liked():
-    return render_template('liked.html', likedRestaurants=likedRestaurants)
+    return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
 
 # @app.route("/account")
 # def account():
