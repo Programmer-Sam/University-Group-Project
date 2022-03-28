@@ -24,7 +24,7 @@ def landing():
 @app.route('/')
 @app.route("/home")
 def home():
-    restaurants = database.passDataToFront()
+    restaurants = database.passDataToFront(database.getRestaurants())
     return render_template('home.html', restaurants=restaurants)
 
 @app.route("/liked")
