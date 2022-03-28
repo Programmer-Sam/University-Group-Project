@@ -22,9 +22,8 @@
     </ul>
   </div>
 
-  <div class="content">
-    {%for i in range(0, len)%}
-    <!---->
+   <div class="content">
+    {{%for i in range(0, len)%}}
     <div>
       <h2>{{likedRestaurants[i][2]}}</h2>
       {{likedRestaurants[i]}}
@@ -32,8 +31,7 @@
       <img src={{likedRestaurants[i][4]}} alt={{likedRestaurants[i][2]}}/>
     </div>
 
-    <!---->
-    {%endfor%}
+    {{%endfor%}}
   </div>
 
   <footer class="footer">

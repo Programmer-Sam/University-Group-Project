@@ -9,12 +9,12 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man
 db = SQLAlchemy(app)
 
 posts = {
-    'user_ID': "User ID: ",
+    'user_ID': "",
     'email':''
 }
 
-likedRestaurants = database.getRestaurants()
-#
+likedRestaurants = database.getLikesByUserID(1)
+
 print(likedRestaurants)
 
 @app.route('/landing')
@@ -31,9 +31,9 @@ def home():
 def liked():
     return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
 
-# @app.route("/account")
-# def account():
-#     return render_template('account.html', posts=posts)
+@app.route("/account")
+def account():
+    return render_template('account.html', posts=posts)
 
 @app.route('/signin')
 def signin():
@@ -42,17 +42,6 @@ def signin():
 @app.route("/signup")
 def signup():
     return render_template('signup.html')
-
-@app.route('/accountNav', methods=['GET', 'POST'])
-def accountNav():
-    if request.method == 'POST':
-        if request.form.get('signInButton') == 'SignIn':
-            return render_template('signin.html')
-        elif request.form.get('signUpButton') == 'SignUp':
-            return render_template('signup.html')
-    elif request.method == 'GET':
-        return render_template('home.html')
-    return render_template('home.html')
 
 @app.route('/addUserAccount', methods=['GET', 'POST'])
 def addUserAccount():
