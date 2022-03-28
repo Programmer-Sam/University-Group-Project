@@ -13,9 +13,9 @@ posts = {
     'email':''
 }
 
-likedRestaurants = database.getLikesByUserID(1)
-
-print(likedRestaurants)
+# likedRestaurants = database.getLikesByUserID(1)
+#
+# print(likedRestaurants)
 
 @app.route('/landing')
 def landing():
@@ -31,9 +31,9 @@ def home():
 def liked():
     return render_template('liked.html', likedRestaurants=likedRestaurants)
 
-@app.route("/account")
-def account():
-    return render_template('account.html', posts=posts)
+# @app.route("/account")
+# def account():
+#     return render_template('account.html', posts=posts)
 
 @app.route('/signin')
 def signin():
@@ -69,14 +69,13 @@ def addUserAccount():
 
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
-    global posts
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
         userID = database.getUserID(email)
         if password == database.queryUserEmailReturnHash(email):
             posts = {
-                'user_ID': "User ID: " + str(userID),
+                'user_ID': userID,
                 'email': email
             }
             return render_template('account.html',posts=posts)
