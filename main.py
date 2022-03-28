@@ -4,10 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import db_access as database
 #from forms import RegistrationForm, LoginForm
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
-db = SQLAlchemy(app)
-
+app = database.app
 posts = {
     'user_ID': "",
     'email':''
@@ -15,7 +12,6 @@ posts = {
 
 likedRestaurants = database.getLikesByUserID(1)
 
-print(likedRestaurants)
 
 @app.route('/landing')
 def landing():
@@ -73,3 +69,13 @@ def signIn():
         return render_template('signup.html')
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/changePassword', methods=['GET', 'POST'])
+def changePassword():
+    if request.method == 'GET':
+        newPassword = request.args.get('newPassword')
+        confirmPassword = request.args.get('confirmPassword')
+        print("here")
+        if newPassword == confirmPassword:
+            database.changePasswordByID(posts["user_ID"], newPassword)
+        return render_template('signup.html')
