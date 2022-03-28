@@ -15,6 +15,12 @@ posts = {
 
 likedRestaurants = database.getLikesByUserID(1)
 
+print(likedRestaurants)
+
+@app.route('/landing')
+def landing():
+    return render_template('landingpage.html')
+
 @app.route('/')
 @app.route("/home")
 def home():
@@ -22,7 +28,7 @@ def home():
 
 @app.route("/liked")
 def liked():
-    return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
+    return render_template('liked.html', likedRestaurants=likedRestaurants)
 
 @app.route("/account")
 def account():
