@@ -1,10 +1,14 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
-db = SQLAlchemy(app)
+def start_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db = SQLAlchemy(app)
+    return app, db
 
+app, db = start_app()
 class users(db.Model):
    id = db.Column('user_id', db.Integer, primary_key = True)
    email = db.Column(db.String(200))
@@ -49,11 +53,13 @@ def AddRestaurants():
     inserted_row = restaurants(name,food_type,Address,"",Linkweb)
     db.session.add (inserted_row)
     db.session.commit()
+    db.session.close()
 
 def insert_db(email, password):
     inserted_row = users(email,password)
     db.session.add (inserted_row)
     db.session.commit()
+    db.session.close()
 
 def queryUserEmailReturnHash(email_input):
     records = users.query.filter_by(email=email_input).first()
@@ -97,6 +103,8 @@ def addLikedLink(Disliked_bit, Userid_int, Restaurantid_int):
     inserted_row = LIKED(Disliked_bit, Userid_int, Restaurantid_int)
     db.session.add (inserted_row)
     db.session.commit()
+    db.session.close()
+    db.session.expunge_all()
 
 def getLikesByUserID(user_id):
     data = LIKED.query.filter_by(Userid_int=user_id).all()
@@ -106,5 +114,8 @@ def getLikesByUserID(user_id):
                             record.Restaurantid_int, *getRestaurantsByID(record.Restaurantid_int)])
     return output_data
 
-#print(passDataToFront(getRestaurants()))
-#print(getLikesByUserID(1))
+def changePasswordByID(id, newPassword):
+    update = user.query.filter_by(user_id=id).first()
+    update.password_hash = newPassword
+    session.commit()
+    session.close()

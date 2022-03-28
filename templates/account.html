@@ -23,12 +23,12 @@
   <div class="content">
     <h1 style="margin-bottom: 60px">Account Details</h1>
     <p class="account_page">User ID: {{posts["user_ID"]}}</p>
-    <p class="account_page" style="margin-bottom: 70px">Email: {{posts["user_ID"]}}</p>
+    <p class="account_page" style="margin-bottom: 70px">Email: {{posts["email"]}}</p>
     <hr>
-    <form class="login">
+    <form class="login" action="/changePassword" method="get">
       <p style="font-size: 24px; margin-bottom: 36px;">Change Password</p>
-      <input class="input" type="password" placeholder="new password"><br>
-      <input class="input" type="password" placeholder="confirm password"><br>
+      <input class="input" type="password" placeholder="new password" name="newPassword"><br>
+      <input class="input" type="password" placeholder="confirm password" name="confirmPassword"><br>
       <input type="submit" class="button_diff" value="Change Password">
     </form>
   </div>
