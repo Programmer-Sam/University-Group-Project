@@ -29,6 +29,7 @@ def liked():
 
 @app.route("/account")
 def account():
+    print(posts)
     return render_template('account.html', posts=posts)
 
 @app.route('/signin')
@@ -54,6 +55,7 @@ def addUserAccount():
 
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
+    global posts
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
