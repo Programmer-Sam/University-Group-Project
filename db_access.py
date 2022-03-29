@@ -5,6 +5,7 @@ def start_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://h54023kc:y20-pass@dbhost.cs.man.ac.uk/2021_comp10120_y20'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_POOL_SIZE'] = 20
     db = SQLAlchemy(app)
     return app, db
 
