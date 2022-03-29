@@ -29,22 +29,18 @@
             <h1>RESTAURANTS</h1>
             <p><i>Pick what you like!</i></p><br>
 
-            <!-- Automatic Slideshow Images -->
-            <div class="mySlides">
-                <img src="{{url_for('static', filename = 'Black.png')}}" style="width:100%; max-height: 500px;">
-                <div class="button-pack">
-                    <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
-                </div>
-            </div>
-            <div class="mySlides" action="updateRestaurant" method="post">
-              <h3>{{ restaurants[0][0] }}</h3>
-              <h5>{{ restaurants[1][0] }}</h5>
-              <h5>{{ restaurants[2][0] }}</h5>
-
-              <img src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
-                <div class="button-pack">
-                    <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
-                </div>
+            <div>
+              <div id="slide">
+                <h2 id="restaurant-name">restaurant name</h2>
+                <p id="food-type">food type</p>
+                <a id="restaurant-link" href="https://example.com">Website</a>
+                <img id="restaurant-image" src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
+                <p id="postcode">postcode</p>
+              </div>
+              <div class="button-pack">
+                <button class="button">Like</button>
+                <button class="button" onclick="changeSlide()">Pass</button>
+              </div>
             </div>
         </div>
     </div>
@@ -54,33 +50,27 @@
     </footer>
 
     <script>
-        let arrays = {{restaurants|tojson}};
-        console.log(arrays)
+        const restaurantArray = {{restaurants|safe}};
+        const numRestaurants = restaurantArray.length;
+        //console.log(restaurantArray)
 
-        var myIndex = 1;
-        change(myIndex);
+        let index = 1;
 
-        function plus(n) {
-            change(myIndex += n);
+        function changeSlide(n = 1) {
+            index += n;
+            updateSlide();
         }
 
-        function current(n) {
-            change(myIndex = n);
-        }
+        function updateSlide() {
+            index = (index+numRestaurants)%numRestaurants;
 
-        function change(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides ");
-            if (n > x.length) {
-                myIndex = 1;
-            }
-            if (n < 1) {
-                myIndex = x.length;
-            }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none ";
-            }
-            x[myIndex - 1].style.display = "block ";
+            const slide = document.getElementById("slide");
+            slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][0];
+            slide.querySelector("#food-type").innerHTML = restaurantArray[index][1];
+            slide.querySelector("#postcode").innerHTML = restaurantArray[index][2];
+            slide.querySelector("#restaurant-image").src = restaurantArray[index][3];
+            slide.querySelector("#restaurant-link").href = restaurantArray[index][4];
+
         }
     </script>
 

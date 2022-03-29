@@ -82,6 +82,8 @@ def getRestaurants():
                             record.Location,
                             record.Linkpic,
                             record.Linkweb])
+    print(output_data)
+
     return output_data
 
 def passDataToFront(data):
