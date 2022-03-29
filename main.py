@@ -5,9 +5,9 @@ import db_access as database
 #from forms import RegistrationForm, LoginForm
 
 app = database.app
-posts = {
-    'user_ID': "",
-    'email':''
+accountDetails = {
+    "userID": "",
+    "email": ""
 }
 
 likedRestaurants = database.getLikesByUserID(1)
@@ -29,8 +29,8 @@ def liked():
 
 @app.route("/account")
 def account():
-    print(posts)
-    return render_template('account.html', posts=posts)
+    #print(accountDetails)
+    return render_template('account.html', accountDetails=accountDetails)
 
 @app.route('/signin')
 def signin():
@@ -55,17 +55,17 @@ def addUserAccount():
 
 @app.route('/signIn', methods=['GET', 'POST'])
 def signIn():
-    global posts
+    global accountDetails
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
         userID = database.getUserID(email)
         if password == database.queryUserEmailReturnHash(email):
-            posts = {
-                'user_ID': userID,
-                'email': email
+            accountDetails = {
+                "userID": userID,
+                "email": email
             }
-            return render_template('account.html',posts=posts)
+            return account()
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('signup.html')
@@ -79,5 +79,5 @@ def changePassword():
         confirmPassword = request.args.get('confirmPassword')
         print("here")
         if newPassword == confirmPassword:
-            database.changePasswordByID(posts["user_ID"], newPassword)
+            database.changePasswordByID(accountDetails["userID"], newPassword)
         return render_template('signup.html')
