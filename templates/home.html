@@ -13,6 +13,9 @@
 
 <body>
 
+  <!-- <img src="{{ li[1].div.img['data-src'] }}"> -->
+
+
     <div>
         <ul>
             <li><a href="/home">Home</a></li>
@@ -33,12 +36,12 @@
                     <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
                 </div>
             </div>
-            <div class="mySlides">
+            <div class="mySlides" action="updateRestaurant" method="post">
               <h3>{{ restaurants[0][0] }}</h3>
-              <h5>{{ restaurants[0][1] }}</h5>
-              <h5>{{ restaurants[0][2] }}</h5>
+              <h5>{{ restaurants[1][0] }}</h5>
+              <h5>{{ restaurants[2][0] }}</h5>
 
-              <img src="{{url_for('static', filename = 'White.png')}}" style="width:100%; max-height: 300px;">
+              <img src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
                 <div class="button-pack">
                     <input type="submit" class="button" value="Like"><input type="submit" class="button" onclick="plus(1)" value="Pass">
                 </div>
@@ -51,6 +54,9 @@
     </footer>
 
     <script>
+        let arrays = {{restaurants|tojson}};
+        console.log(arrays)
+
         var myIndex = 1;
         change(myIndex);
 
