@@ -1,27 +1,38 @@
 #from flask import Flask, render_template, url_for, flash, redirect
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import db_access as database
 #from forms import RegistrationForm, LoginForm
+
+from xml.dom.minidom import Element
+from bs4 import BeautifulSoup
+import requests
+
+source = requests.get('https://confidentialguides.com/guide/the-coolest-places-to-eat-in-manchester/').text #gets the webpage html code
+soup = BeautifulSoup(source, 'lxml') #connects bs4 to the webpage
+
+li = soup.find_all('li', class_='c-Guide_Item') #finds a li attribute with the specific class (each resturaunt is stored in a seperate new li)
+span = soup.find_all('span', class_='o-M10 c-Meta c-Meta-lrg') #this is for getting the type of food
+
 
 app = database.app
 posts = {
     'user_ID': "",
     'email':''
 }
-
+i = 0
 likedRestaurants = database.getLikesByUserID(1)
 
 
-@app.route('/landing')
+@app.route('/')
 def landing():
     return render_template('landingpage.html')
 
-@app.route('/')
+@app.route('/home')
 @app.route("/home")
 def home():
     restaurants = database.passDataToFront(database.getRestaurants())
-    return render_template('home.html', restaurants=restaurants)
+    return render_template('home.html', restaurants=restaurants, li=li)
 
 @app.route("/liked")
 def liked():
@@ -29,7 +40,6 @@ def liked():
 
 @app.route("/account")
 def account():
-    print(posts)
     return render_template('account.html', posts=posts)
 
 @app.route('/signin')
@@ -74,6 +84,7 @@ if __name__ == '__main__':
 
 @app.route('/changePassword', methods=['GET', 'POST'])
 def changePassword():
+    print(request.method)
     if request.method == 'GET':
         newPassword = request.args.get('newPassword')
         confirmPassword = request.args.get('confirmPassword')
@@ -81,3 +92,4 @@ def changePassword():
         if newPassword == confirmPassword:
             database.changePasswordByID(posts["user_ID"], newPassword)
         return render_template('signup.html')
+    return render_template('sign.html')
