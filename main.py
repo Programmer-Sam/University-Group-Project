@@ -75,7 +75,8 @@ def signIn():
                 'user_ID': userID,
                 'email': email
             }
-            return render_template('account.html',posts=posts)
+            #return render_template('account.html',posts=posts)
+            return home()
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('signup.html')
