@@ -33,10 +33,10 @@
         <div class="center" style="max-width:700px;">
             <div id="slide">
                 <h2 id="restaurant-name">restaurant name</h2>
-                <p style="font-size: 20px;"id="food-type">food type</p>
+                <p style="font-size: 20px;"id="restaurant-food-type">food type</p>
                 <a class="aspec" style="text-decoration: none;" id="restaurant-link" href="https://example.com">Website</a>
                 <img class="imgcntr"  id="restaurant-image" src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
-                <p style="font-size: 20px;"id="postcode">postcode</p>
+                <p style="font-size: 20px;"id="restaurant-location">location</p>
             </div>
             <div class="button-pack">
                 <button class="button">Like</button>
@@ -68,8 +68,8 @@
 
             const slide = document.getElementById("slide");
             slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][1];
-            slide.querySelector("#food-type").innerHTML = restaurantArray[index][2];
-            slide.querySelector("#location").innerHTML = restaurantArray[index][3];
+            slide.querySelector("#restaurant-food-type").innerHTML = restaurantArray[index][2];
+            slide.querySelector("#restaurant-location").innerHTML = restaurantArray[index][3];
             slide.querySelector("#restaurant-image").src = restaurantArray[index][4];
             slide.querySelector("#restaurant-link").href = restaurantArray[index][5];
 
