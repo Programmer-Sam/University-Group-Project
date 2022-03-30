@@ -173,3 +173,12 @@ h2 {
   margin-right: auto;
   width: 50%;
 }
+
+.contentliked {
+  margin: auto;
+  max-width: 1000px;
+  margin-top: 46px;
+  padding-bottom: 60px;
+  background-color: black;
+  color: white;
+}

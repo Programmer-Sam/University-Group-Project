@@ -20,11 +20,11 @@
     </ul>
   </div>
 
-  <div class="content">
+  <div class="contentliked">
     <h1 style="margin-bottom: 60px">Account Details</h1>
     <p class="account_page">User ID: {{accountDetails["userID"]}}</p>
     <p class="account_page" style="margin-bottom: 70px">Email: {{accountDetails["email"]}}</p>
-    <hr>
+    <hr style="width: 70%">
     <div class='login'>
     <form action="/changePassword" method="get">
       <p style="font-size: 24px; margin-bottom: 36px;">Change Password</p>
@@ -32,11 +32,11 @@
       <input class="input" type="password" placeholder="confirm password" name="confirmPassword"><br>
       <input type="submit" class="button_diff" value="Change Password">
     </form> </div>
+    <hr style="width: 70%">
+    <footer class="footer">
+      <a>foodfinder@gmail.com</a>
+    </footer>
   </div>
-
-  <footer class="footer">
-    <a>foodfinder@gmail.com</a>
-  </footer>
 </body>
 
 </html>
