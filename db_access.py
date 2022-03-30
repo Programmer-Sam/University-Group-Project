@@ -19,7 +19,7 @@ class users(db.Model):
        self.email = email
        self.password_hash = password_hash
 class restaurants(db.Model):
-    id = db.Column('restaurant_id', db.Integer, primary_key = True)
+    Restaurantid_int = db.Column('restaurant_id', db.Integer, primary_key = True)
     Restaurant_Name = db.Column(db.String(100))
     Food_Type = db.Column(db.String(200))
     Location = db.Column(db.String(200))
@@ -43,6 +43,7 @@ class LIKED(db.Model):
         self.Disliked_bit = Disliked_bit
         self.Userid_int = Userid_int
         self.Restaurantid_int = Restaurantid_int
+        
 def create_db():
     db.create_all()
 
@@ -77,7 +78,7 @@ def getRestaurants():
     data = restaurants.query.all()
     output_data = []
     for record in data:
-        output_data.append([record.Restaurant_Name,
+        output_data.append([record.Restaurantid_int, record.Restaurant_Name,
                             record.Food_Type,
                             record.Location,
                             record.Linkpic,
@@ -86,21 +87,21 @@ def getRestaurants():
 
     return output_data
 
-def passDataToFront(data):
-    names = []
-    food_type = []
-    locations = []
-    picture = []
-    for record in data:
-        names.append(record[0])
-        food_type.append(record[1])
-        locations.append(record[2])
-        picture.append(record[4])
-    return names, food_type, locations, picture
+# def passDataToFront(data):
+#     names = []
+#     food_type = []
+#     locations = []
+#     picture = []
+#     for record in data:
+#         names.append(record[0])
+#         food_type.append(record[1])
+#         locations.append(record[2])
+#         picture.append(record[4])
+#     return names, food_type, locations, picture
 
 def getRestaurantsByID(id):
-    data = restaurants.query.filter_by(id=id).first()
-    return [data.Restaurant_Name, data.Food_Type, data.Location, data.Linkpic, data.Linkweb]
+    data = restaurants.query.filter_by(Restaurantid_int=id).first()
+    return [data.Restaurantid_int, data.Restaurant_Name, data.Food_Type, data.Location, data.Linkpic, data.Linkweb]
 
 def addLikedLink(Disliked_bit, Userid_int, Restaurantid_int):
     inserted_row = LIKED(Disliked_bit, Userid_int, Restaurantid_int)

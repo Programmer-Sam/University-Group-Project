@@ -23,14 +23,18 @@
   </div>
 
    <div class="content">
-    {{%for i in range(0, len)%}}
+    {%for i in range(0, len)%}
     <div>
-      <h2>{{likedRestaurants[i][2]}}</h2>
-      {{likedRestaurants[i]}}
-       <a href={{likedRestaurants[i][6]}}>Website</a>
+      <div class="restaurant-slide">
+        <h2 class="restaurant-name">{{likedRestaurants[i][3]}}</h2>
+        <p class="food-type">{{likedRestaurants[i][4]}}</p>
+        <a class="restaurant-link" href="{{likedRestaurants[i][7]}}">Website</a>
+        <img class="restaurant-image" src="{{likedRestaurants[i][6]}}" style="width:100%; max-height: 300px;">
+        <p class="location">{{likedRestaurants[i][5]}}</p>
+      </div>
     </div>
 
-    {{%endfor%}}
+    {%endfor%}
   </div>
 
   <footer class="footer">

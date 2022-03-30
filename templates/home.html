@@ -52,9 +52,10 @@
     <script>
         const restaurantArray = {{restaurants|safe}};
         const numRestaurants = restaurantArray.length;
-        //console.log(restaurantArray)
-
+        
         let index = 1;
+        updateSlide();
+
         updateSlide();
 
         function changeSlide(n = 1) {
@@ -66,11 +67,11 @@
             index = (index + numRestaurants) % numRestaurants;
 
             const slide = document.getElementById("slide");
-            slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][0];
-            slide.querySelector("#food-type").innerHTML = restaurantArray[index][1];
-            slide.querySelector("#postcode").innerHTML = restaurantArray[index][2];
-            slide.querySelector("#restaurant-image").src = restaurantArray[index][3];
-            slide.querySelector("#restaurant-link").href = restaurantArray[index][4];
+            slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][1];
+            slide.querySelector("#food-type").innerHTML = restaurantArray[index][2];
+            slide.querySelector("#location").innerHTML = restaurantArray[index][3];
+            slide.querySelector("#restaurant-image").src = restaurantArray[index][4];
+            slide.querySelector("#restaurant-link").href = restaurantArray[index][5];
 
         }
     </script>
