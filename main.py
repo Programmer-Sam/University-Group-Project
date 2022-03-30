@@ -39,6 +39,12 @@ def home():
 def liked():
     return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
 
+@app.route("/likeRestaurant")
+def likeRestaurant():
+    id = request.args.get('id')
+    print("Liking restaurant " + str(id))
+    return "hello"
+
 @app.route("/account")
 def account():
     #print(accountDetails)

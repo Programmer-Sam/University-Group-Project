@@ -39,7 +39,7 @@
                 <p style="font-size: 20px;"id="restaurant-location">location</p>
             </div>
             <div class="button-pack">
-                <button class="button">Like</button>
+                <button class="button" onclick="likeRestaurant()">Like</button>
                 <button class="button" onclick="changeSlide()">Pass</button>
             </div>
         </div>
@@ -56,8 +56,6 @@
         let index = 1;
         updateSlide();
 
-        updateSlide();
-
         function changeSlide(n = 1) {
             index += n;
             updateSlide();
@@ -72,6 +70,13 @@
             slide.querySelector("#restaurant-location").innerHTML = restaurantArray[index][3];
             slide.querySelector("#restaurant-image").src = restaurantArray[index][4];
             slide.querySelector("#restaurant-link").href = restaurantArray[index][5];
+
+        }
+
+        function likeRestaurant(){
+            fetch("likeRestaurant?id=" + restaurantArray[index][0])
+            .then(response => response.text())
+            .then(data => console.log(data));
 
         }
     </script>
