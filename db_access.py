@@ -43,7 +43,7 @@ class LIKED(db.Model):
         self.Disliked_bit = Disliked_bit
         self.Userid_int = Userid_int
         self.Restaurantid_int = Restaurantid_int
-        
+
 def create_db():
     db.create_all()
 
@@ -118,8 +118,9 @@ def getLikesByUserID(user_id):
                             record.Restaurantid_int, *getRestaurantsByID(record.Restaurantid_int)])
     return output_data
 
-def changePasswordByID(id, newPassword):
-    update = user.query.filter_by(user_id=id).first()
-    update.password_hash = newPassword
-    session.commit()
-    session.close()
+def changePasswordByID(input_id, newPassword):
+    print(input_id, newPassword)
+    if users.query.filter_by(id=input_id).first()!= None:
+        db.session.query(users).filter(users.id==input_id).update({'password_hash':newPassword})
+        db.session.commit()
+        db.session.close()
