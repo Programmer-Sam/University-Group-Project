@@ -32,7 +32,7 @@ def landing():
 @app.route("/home")
 def home():
     restaurants = database.getRestaurants()
-    print(restaurants)
+    #print(restaurants)
     return render_template('home.html', restaurants=restaurants, li=li)
 
 @app.route("/liked")

@@ -4,7 +4,11 @@ x§* {
 
 body {
   margin: 0;
-  background-color: white;
+  background: url("/static/img/home_background.jpg") no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1 {
@@ -74,7 +78,9 @@ li a:hover:not(.active) {
 }
 
 .content {
-  max-width: 2000px;
+  margin: auto;
+  max-width: 1000px;
+  height: 950px;
   margin-top: 46px;
   padding-bottom: 60px;
   background-color: black;
@@ -90,6 +96,7 @@ li a:hover:not(.active) {
 }
 
 .footer {
+  color: white;
   text-align: center;
   margin: 30px;
 }
@@ -143,4 +150,26 @@ hr {
   width: 80%;
   margin-top: 20px;
   margin-bottom: 60px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.aspec {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.imgcntr {
+  max-height: 600px;
+  max-width: 600px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

@@ -13,7 +13,7 @@
 
 <body>
 
-  <!-- <img src="{{ li[1].div.img['data-src'] }}"> -->
+    <!-- <img src="{{ li[1].div.img['data-src'] }}"> -->
 
 
     <div>
@@ -28,32 +28,33 @@
         <div class="center" style="max-width:700px;">
             <h1>RESTAURANTS</h1>
             <p><i>Pick what you like!</i></p><br>
-
-            <div>
-              <div id="slide">
+        </div>
+        <hr style="width: 70%;">
+        <div class="center" style="max-width:700px;">
+            <div id="slide">
                 <h2 id="restaurant-name">restaurant name</h2>
-                <p id="food-type">food type</p>
-                <a id="restaurant-link" href="https://example.com">Website</a>
-                <img id="restaurant-image" src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
-                <p id="location">location</p>
-              </div>
-              <div class="button-pack">
+                <p style="font-size: 20px;"id="food-type">food type</p>
+                <a class="aspec" style="text-decoration: none;" id="restaurant-link" href="https://example.com">Website</a>
+                <img class="imgcntr"  id="restaurant-image" src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
+                <p style="font-size: 20px;"id="postcode">postcode</p>
+            </div>
+            <div class="button-pack">
                 <button class="button">Like</button>
                 <button class="button" onclick="changeSlide()">Pass</button>
-              </div>
             </div>
         </div>
+        <hr style="width: 70%;">
+        <footer class="footer">
+            <a>foodfinder@gmail.com</a>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <a>foodfinder@gmail.com</a>
-    </footer>
 
     <script>
         const restaurantArray = {{restaurants|safe}};
         const numRestaurants = restaurantArray.length;
         
         let index = 1;
+        updateSlide();
 
         updateSlide();
 
@@ -63,7 +64,7 @@
         }
 
         function updateSlide() {
-            index = (index+numRestaurants)%numRestaurants;
+            index = (index + numRestaurants) % numRestaurants;
 
             const slide = document.getElementById("slide");
             slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][1];
