@@ -35,7 +35,7 @@
                 <p id="food-type">food type</p>
                 <a id="restaurant-link" href="https://example.com">Website</a>
                 <img id="restaurant-image" src="{{ li[1].div.img['data-src'] }}" style="width:100%; max-height: 300px;">
-                <p id="postcode">postcode</p>
+                <p id="location">location</p>
               </div>
               <div class="button-pack">
                 <button class="button">Like</button>
@@ -52,9 +52,10 @@
     <script>
         const restaurantArray = {{restaurants|safe}};
         const numRestaurants = restaurantArray.length;
-        //console.log(restaurantArray)
-
+        
         let index = 1;
+
+        updateSlide();
 
         function changeSlide(n = 1) {
             index += n;
@@ -65,11 +66,11 @@
             index = (index+numRestaurants)%numRestaurants;
 
             const slide = document.getElementById("slide");
-            slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][0];
-            slide.querySelector("#food-type").innerHTML = restaurantArray[index][1];
-            slide.querySelector("#postcode").innerHTML = restaurantArray[index][2];
-            slide.querySelector("#restaurant-image").src = restaurantArray[index][3];
-            slide.querySelector("#restaurant-link").href = restaurantArray[index][4];
+            slide.querySelector("#restaurant-name").innerHTML = restaurantArray[index][1];
+            slide.querySelector("#food-type").innerHTML = restaurantArray[index][2];
+            slide.querySelector("#location").innerHTML = restaurantArray[index][3];
+            slide.querySelector("#restaurant-image").src = restaurantArray[index][4];
+            slide.querySelector("#restaurant-link").href = restaurantArray[index][5];
 
         }
     </script>
