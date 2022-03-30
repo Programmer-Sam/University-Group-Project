@@ -123,3 +123,4 @@ def changePasswordByID(input_id, newPassword):
     if users.query.filter_by(id=input_id).first()!= None:
         db.session.query(users).filter(users.id==input_id).update({'password_hash':newPassword})
         db.session.commit()
+        db.session.close()
