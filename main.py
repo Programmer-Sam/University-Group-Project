@@ -20,8 +20,6 @@ accountDetails = {
     "userID": "",
     "email": ""
 }
-i = 0
-likedRestaurants = database.getLikesByUserID(1)
 
 
 @app.route('/')
@@ -37,11 +35,13 @@ def home():
 
 @app.route("/liked")
 def liked():
+    likedRestaurants = database.getLikesByUserID(int(accountDetails["userID"]))
     return render_template('liked.html', likedRestaurants=likedRestaurants, len=len(likedRestaurants))
 
 @app.route("/likeRestaurant")
 def likeRestaurant():
     id = request.args.get('id')
+    database.addLikedLink(0, accountDetails["userID"], id)
     print("Liking restaurant " + str(id))
     return "hello"
 
