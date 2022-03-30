@@ -67,7 +67,7 @@ def addUserAccount():
         if confirmPassword == password:
             database.insert_db(email, password)
             print("added acc")
-        return render_template('signup.html')
+        return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('home.html')
 
@@ -87,17 +87,15 @@ def signIn():
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('signup.html')
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/changePassword', methods=['GET', 'POST'])
 def changePassword():
-    print(request.method)
     if request.method == 'GET':
         newPassword = request.args.get('newPassword')
         confirmPassword = request.args.get('confirmPassword')
-        print("here")
         if newPassword == confirmPassword:
             database.changePasswordByID(accountDetails["userID"], newPassword)
-        return render_template('signup.html')
-    return render_template('sign.html')
+            return signin()
+    return signin()
+
+if __name__ == '__main__':
+    app.run(debug=True)
