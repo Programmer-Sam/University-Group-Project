@@ -7,6 +7,7 @@ import db_access as database
 from xml.dom.minidom import Element
 from bs4 import BeautifulSoup
 import requests
+import hashlib
 
 source = requests.get('https://confidentialguides.com/guide/the-coolest-places-to-eat-in-manchester/').text #gets the webpage html code
 soup = BeautifulSoup(source, 'lxml') #connects bs4 to the webpage
@@ -65,7 +66,8 @@ def addUserAccount():
         password = request.args.get('Password')
         confirmPassword = request.args.get('confirmPassword')
         if confirmPassword == password:
-            database.insert_db(email, password)
+            passhash = hashlib.md5(password)
+            database.insert_db(email, passhash.hexdigest())
             print("added acc")
         return render_template('signin.html')
     elif request.method == 'POST':
@@ -77,8 +79,9 @@ def signIn():
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
+        passhash = hashlib.md5(password)
         userID = database.getUserID(email)
-        if password == database.queryUserEmailReturnHash(email):
+        if passhash.hexdigest() == database.queryUserEmailReturnHash(email):
             accountDetails = {
                 "userID": userID,
                 "email": email
@@ -93,7 +96,8 @@ def changePassword():
         newPassword = request.args.get('newPassword')
         confirmPassword = request.args.get('confirmPassword')
         if newPassword == confirmPassword:
-            database.changePasswordByID(accountDetails["userID"], newPassword)
+            passhash = hashlib.md5(newPassword)
+            database.changePasswordByID(accountDetails["userID"], passhash.hexdigest())
             return signin()
     return signin()
 
