@@ -47,12 +47,8 @@ class LIKED(db.Model):
 def create_db():
     db.create_all()
 
-def AddRestaurants():
-    name = "Ice Stone Gelato"
-    food_type = "Ice Cream and Deserts"
-    Address = "M1 7DY"
-    Linkweb = "https://www.google.com/maps/place/IceStone+Gelato/@53.4704223,-2.2373532,21z/data=!4m13!1m7!3m6!1s0x487bb19331bc9ed3:0x5a905cb68ffc970b!2sOxford+Rd,+Manchester+M1+7DY!3b1!8m2!3d53.4704789!4d-2.2370621!3m4!1s0x487bb19331f7e379:0x105d79e57595fd10!8m2!3d53.4704983!4d-2.2372026"
-    inserted_row = restaurants(name,food_type,Address,"",Linkweb)
+def AddRestaurant(name, food_type, address, image_url, website):
+    inserted_row = restaurants(name, food_type, address, image_url, website)
     db.session.add (inserted_row)
     db.session.commit()
     db.session.close()

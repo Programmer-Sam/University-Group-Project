@@ -1,18 +1,31 @@
 from xml.dom.minidom import Element
 from bs4 import BeautifulSoup
 import requests
+import db_access as database
+
 
 source = requests.get('https://confidentialguides.com/guide/the-coolest-places-to-eat-in-manchester/').text #gets the webpage html code
 soup = BeautifulSoup(source, 'lxml') #connects bs4 to the webpage 
 
-cards = soup.find_all('article', class_='card')
+items = soup.find_all('li', class_='c-Guide_Item')
+foodtypes = soup.find_all("span", class_="o-M10 c-Meta c-Meta-lrg")
+guideUrls = soup.find_all("a", class_="c-Btn") 
 
-for card in cards:
+for i in range(len(items)):
+  item = items[i]
+  imageurl = item.div.img['data-src']
+  name = item.div.div.h2.a.text
+  guideLink = guideUrls[i]["href"]
+  foodtype = foodtypes[i].text
 
-  imageurl = card.div.img['data-src']
-  name = card.div.div.h3.a.text
-  foodtype = span[i].text
-  print(imageurl, name, foodtype)
+  sourcea = requests.get(guideLink).text #gets the webpage html code
+  soupa = BeautifulSoup(sourcea, 'lxml') #connects bs4 to the webpage 
+
+  address = soupa.find_all("address")[0].text
+  website = "https://" + soupa.find_all("span", class_="c-Restaurant_ContactLabel")[0].text
+
+  database.AddRestaurant(name, foodtype, address, imageurl, website)
+  # print(website, name, foodtype, guideLink, address)
 
 
 # print(li[1]) #This gets the image URL
