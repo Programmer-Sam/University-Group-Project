@@ -66,9 +66,9 @@ def addUserAccount():
         password = request.args.get('Password')
         confirmPassword = request.args.get('confirmPassword')
         if confirmPassword == password:
-            passhash = hashlib.md5(password)
+            passhash = hashlib.md5(password.encode('utf-8'))
             database.insert_db(email, passhash.hexdigest())
-            print("added acc")
+            print("added acc", email, passhash)
         return render_template('signin.html')
     elif request.method == 'POST':
         return render_template('home.html')
@@ -79,7 +79,7 @@ def signIn():
     if request.method == 'GET':
         email = request.args.get('email')
         password = request.args.get('password')
-        passhash = hashlib.md5(password)
+        passhash = hashlib.md5(password.encode('utf-8'))
         userID = database.getUserID(email)
         if passhash.hexdigest() == database.queryUserEmailReturnHash(email):
             accountDetails = {
@@ -96,7 +96,7 @@ def changePassword():
         newPassword = request.args.get('newPassword')
         confirmPassword = request.args.get('confirmPassword')
         if newPassword == confirmPassword:
-            passhash = hashlib.md5(newPassword)
+            passhash = hashlib.md5(newPassword.encode('utf-8'))
             database.changePasswordByID(accountDetails["userID"], passhash.hexdigest())
             return signin()
     return signin()
